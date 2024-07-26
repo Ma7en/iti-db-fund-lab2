@@ -1,0 +1,183 @@
+// ==================================================================================
+// ==================================================================================
+// Entity to maping
+
+Problem 1 => day1-lab1-> 1
+
+
+/* -- Relationship -- */
+musician(#'MusicianID', Name, Street, City, PhoneNumber)
+Instrument(#'Name', MusicalKey)
+Album(#'AlbumID', 'Title', CopyrightDate, *'M_MusicianID')
+Song(#'Title', Author, *'A_AlbumID')
+mus_Inst(#*'M_MusicianID', #*'I_Name')
+son_mus(#*'S_Title', #*'M_MusicianID')
+
+
+
+
+1- Mapping of Regular Entity Types
+Attributes => 
+musician(#'MusicianID', Name, Street, City, PhoneNumber)
+Instrument(#'Name', MusicalKey)
+Album(#'AlbumID', 'Title', CopyrightDate)
+Song(#'Title', Author)
+
+
+
+
+
+2- Mapping of Weak Entity Types => (Create new table for each weak entity + foreign key + primary key of dependents => Choose primary key )
+
+
+
+
+3- Mapping of Binary 1:1 Relation Types
+-> Participation:- 
+    A ->  Total : Total (Merge to table)
+        -> Participation:- 
+            => 
+                - 
+                - 
+
+    B -> Partial : Partial (Create new table + Attributes in Relationships)
+        -> Participation:- 
+            => 
+                - 
+                - 
+
+    C -> Total : Partial (tak to primary key in Partial => fornkey Total (as a references))
+        -> Participation:- 
+            => 
+                - 
+                - 
+
+
+
+4: Mapping of Binary 1:N Relationship Types.
+-> Relationships:- 
+    => Album-has-Songs:
+        -> Album--->m>Songs 
+        👆
+        -> Album<1<---Songs 
+    =>  Album-isProducedBy-Musician:
+        -> Album--->1>Musician
+        👇
+        -> Album<m<---Musician
+
+
+5: Mapping of Binary M:N Relationship Types.
+-> Relationships:- 
+    => Musician-plays-Instrument:
+        -> Musician--->m>Instrument
+        -> Musician<m<---Instrument
+        *new
+    => Song-isPerformedBy-Musician:
+        -> Song--->m>Musician 
+        -> Song<m<---Musician 
+        *new 
+
+
+
+6: Mapping of Multi-valued attributes. => (create new table => primary key + Multi value)
+
+
+
+
+7: Mapping of N-ary Relationship Types. => (create new table => primary-key-1 + primary-key-2 + primary-key-3 + Attributes of relationship)
+
+
+
+
+
+
+// ==================================================================================
+// ==================================================================================
+// Entity to maping
+Problem 2 => day1-lab1->2
+
+
+
+/* -- Relation -- */
+SalesOffice(#'OfficeNumber', Location, *'E_EmployeeID', *'E_EmployeeID')
+Employee(#'EmployeeID', EmployeeName)
+Property(#'PropertyID', Address, City, State, ZipCode, *'S_OfficeNumber')
+Owner(#'OwnerID', OwnerName)
+prop_own(#*'P_PropertyID', #*'O_OwnerID', percent)
+
+
+
+
+1- Mapping of Regular Entity Types
+Attributes =>
+SalesOffice(#'OfficeNumber', Location)
+Employee(#'EmployeeID', EmployeeName)
+Property(#'PropertyID', Address, City, State, ZipCode)
+Owner(#'OwnerID', OwnerName)
+
+
+
+
+2- Mapping of Weak Entity Types
+
+
+
+
+3- Mapping of Binary 1:1 Relation Types
+-> Participation:- 
+    A ->  Total : Total (Merge to table)
+        -> Participation:- 
+            => 
+                - 
+                - 
+
+    B -> Partial : Partial (Create new table + Attributes in Relationships)
+        -> Participation:- 
+            => 
+                - 
+                - 
+                
+    C -> Total : Partial (tak to primary key in Partial => fornkey Total (as a references))
+        -> Participation:- 
+            => SalesOffice-isManagedBy-Employee:
+                - SalesOffice -> (Total -or- Mandatory)
+                👆
+                - Employee    -> (Partial -or- Optional)
+
+
+
+4: Mapping of Binary 1:N Relationship Types.
+-> Relationships:- 
+    => SalesOffice-employs-Employee:
+        -> SalesOffice--->1>Employee
+        👇
+        -> SalesOffice<m<---Employee
+    => SalesOffice-lists-Property:
+        -> SalesOffice--->m>Property
+        👆
+        -> SalesOffice<1<---Property
+
+
+
+5: Mapping of Binary M:N Relationship Types.
+-> Relationships:- 
+    => Property-isOwnedBy-Owner:
+        -> Property--->m>Owner
+        -> Property<m<---Owner
+        *new 
+
+
+6: Mapping of Multi-valued attributes.
+
+
+
+
+7: Mapping of N-ary Relationship Types.
+
+
+
+
+
+
+// ==================================================================================
+// ==================================================================================
